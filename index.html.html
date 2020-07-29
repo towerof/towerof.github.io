@@ -5,14 +5,31 @@
   <title>Choice</title>
 </head>
 <body>
+
   <h1>Best variant</h1>
   <div id="best_variant"></div>
-  <button id="best">Best button</button>
+  <button onclick="specialFunction()" id="best">Best button</button>
   <br><br>
   <h1>Worst variant</h1>
   <div id="worst_variant"></div>
-  <button id="worst">Worst button</button>
+  <button onclick="specialistFunction()" id="worst">Worst button</button>
   <script>
+  function specialFunction() {
+  var x = document.getElementById("best_variant");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+function specialistFunction() {
+var x = document.getElementById("worst_variant");
+if (x.style.display === "none") {
+  x.style.display = "block";
+} else {
+  x.style.display = "none";
+}
+}
     document.getElementById('best').addEventListener('click', loadBest);
     document.getElementById('worst').addEventListener('click', loadWorst);
 
@@ -34,7 +51,6 @@
 
           document.getElementById('best_variant').innerHTML = output;
         }
-    
       }
 
       xhr.send();
