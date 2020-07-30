@@ -13,21 +13,22 @@
   <h1>Worst variant</h1>
   <div id="worst_variant"></div>
   <button onclick="specialistFunction()" id="worst">Worst button</button>
+
   <script>
   function specialFunction() {
   var x = document.getElementById("best_variant");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
+  if (x.style.display === "block") {
     x.style.display = "none";
+  } else {
+    x.style.display = "block";
   }
 }
 function specialistFunction() {
 var x = document.getElementById("worst_variant");
-if (x.style.display === "none") {
-  x.style.display = "block";
-} else {
+if (x.style.display === "block") {
   x.style.display = "none";
+} else {
+  x.style.display = "block";
 }
 }
     document.getElementById('best').addEventListener('click', loadBest);
