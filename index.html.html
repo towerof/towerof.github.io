@@ -1,84 +1,44 @@
-<html lang="en"><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Choice</title>
-  <link rel="icon" href="mon.png">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Choice</title>
+    <link rel="icon" href="mon.png">
 </head>
+
 <body>
 
-  <h1>Best variant</h1>
-  <div id="best_variant"></div>
-  <button onclick="specialFunction()" id="best">Best button</button>
-  <br><br>
-  <h1>Worst variant</h1>
-  <div id="worst_variant"></div>
-  <button onclick="specialistFunction()" id="worst">Worst button</button>
+    <h1>Best variant</h1>
+    <div id="best_variant"></div>
+    <button onclick="Delete()" id="best">Delete</button>
+    <br><br>
+    <h1>Worst variant</h1>
+    <div id="worst_variant"></div>
+    <button onclick="" id="worst">Create</button>
 
-  <script>
-  function specialFunction() {
-  var x = document.getElementById("best_variant");
-  if (x.style.display === "block") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "block";
-  }
-}
-function specialistFunction() {
-var x = document.getElementById("worst_variant");
-if (x.style.display === "block") {
-  x.style.display = "none";
-} else {
-  x.style.display = "block";
-}
-}
-    document.getElementById('best').addEventListener('click', loadBest);
-    document.getElementById('worst').addEventListener('click', loadWorst);
+    <script>
+        function Delete() {
+            var requestBody = "";
 
-    function loadBest(){
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'best_variant.json', true);
+            var client = new XMLHttpRequest();
+            client.open("get", "https://dev97904.service-now.com/api/424138/deleteuser/1826bf03710200044e0bfc8bcbe5d3b");
 
-      xhr.onload = function(){
-        if(this.status == 200){
-          var best_variant = JSON.parse(this.responseText);
+            client.setRequestHeader('Accept', 'application/json');
+            client.setRequestHeader('Content-Type', 'application/json');
+            client.setRequestHeader('Authorization', 'Basic ' + btoa('admin' + ':' + 'amN2w7CTxNJe'));
 
-          var output = '';
-
-          output += '<ul>' +
-            '<li>speed: '+best_variant.speed+'</li>' +
-            '<li>quality: '+best_variant.quality+'</li>' +
-            '<li>power: '+best_variant.power+'</li>' +
-            '</ul>';
-
-          document.getElementById('best_variant').innerHTML = output;
+            client.onreadystatechange = function() {
+                if (this.readyState == this.DONE) {
+                    var Data = this.response;
+                    console.log(Data);
+                }
+            };
+            client.send(requestBody);
         }
-      }
+    </script>
 
-      xhr.send();
-    }
+</body>
 
-    function loadWorst(){
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'worst_variant.json', true);
-
-      xhr.onload = function(){
-        if(this.status == 200){
-          var worst_variant = JSON.parse(this.responseText);
-
-          var output = '';
-            output += '<ul>' +
-              '<li>speed: '+worst_variant.speed+'</li>' +
-              '<li>quality: '+worst_variant.quality+'</li>' +
-              '<li>power: '+worst_variant.power+'</li>' +
-              '</ul>';
-
-          document.getElementById('worst_variant').innerHTML = output;
-        }
-      }
-
-      xhr.send();
-    }
-  </script>
-
-</body></html>
+</html>
