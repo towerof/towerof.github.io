@@ -58,8 +58,8 @@ client.setRequestHeader('Authorization', 'Basic '+ btoa('admin'+':'+'amN2w7CTxNJ
 
 client.onreadystatechange = function() { 
 	if(this.readyState == this.DONE) {
-		//document.getElementById("response").innerHTML=this.status + this.response; 
-        alert('completed');
+		var Data = this.response;
+                    console.log(Data);
 	}
 };
 client.send(requestBody);
