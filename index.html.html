@@ -14,7 +14,7 @@
     <button onclick="Delete()" id="best">Get</button>
     <h1>Delete user</h1>
     <div id="best_variant"></div>
-    <button onclick="Create()" id="best">Delete</button>
+    <button onclick="Create()" id="bestt">Delete</button>
     <br><br>
     <h1>Create user</h1>
     <div id="worst_variant"></div>
@@ -41,32 +41,23 @@
         }
 
         function Create() {
-            var requestBody = "{\
-            "
-            FirstName\ ": \"Peter\",\
-            "
-            LastName\ ": \"Piper\",\
-            "
-            UserName\ ": \"ppiper\",\
-            "
-            Email\ ": \"ppiper@example.com\"
+            var requestBody = "{\"FirstName\": \"Peter\"}";
+
+            var client = new XMLHttpRequest();
+            client.open("post", "https://dev97904.service-now.com/api/424138/delete_the_user/1826bf03710200044e0bfc8bcbe5d3b");
+
+            client.setRequestHeader('Accept', 'application/json');
+            client.setRequestHeader('Content-Type', 'application/json');
+            client.setRequestHeader('Authorization', 'Basic ' + btoa('admin' + ':' + 'amN2w7CTxNJe'));
+
+            client.onreadystatechange = function() {
+                if (this.readyState == this.DONE) {
+                    var Data = this.response;
+                    console.log(Data);
+                }
+            };
+            client.send(requestBody);
         }
-        "; 
-
-        var client = new XMLHttpRequest();
-        client.open("post", "https://dev97904.service-now.com/api/424138/delete_the_user/1826bf03710200044e0bfc8bcbe5d3b");
-
-        client.setRequestHeader('Accept', 'application/json');
-        client.setRequestHeader('Content-Type', 'application/json');
-        client.setRequestHeader('Authorization', 'Basic ' + btoa('admin' + ':' + 'amN2w7CTxNJe'));
-
-        client.onreadystatechange = function() {
-            if (this.readyState == this.DONE) {
-                var Data = this.response;
-                console.log(Data);
-            }
-        };
-        client.send(requestBody);
     </script>
 
 </body>
