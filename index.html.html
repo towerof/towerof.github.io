@@ -39,6 +39,30 @@
             };
             client.send(requestBody);
         }
+        function Create() {
+            var requestBody = "{
+   \"FirstName\": \"Peter\"
+   \"LastName\" : \"Piper\",
+   \"UserName\" : \"ppiper\",
+   \"Email\"    : \"ppiper@example.com\"
+ }"; 
+
+var client=new XMLHttpRequest();
+client.open("post","https://dev97904.service-now.com/api/424138/delete_the_user/1826bf03710200044e0bfc8bcbe5d3b");
+
+client.setRequestHeader('Accept','application/json');
+client.setRequestHeader('Content-Type','application/json');
+
+//Eg. UserName="admin", Password="admin" for this code sample.
+client.setRequestHeader('Authorization', 'Basic '+ btoa('admin'+':'+'amN2w7CTxNJe'));
+
+client.onreadystatechange = function() { 
+	if(this.readyState == this.DONE) {
+		//document.getElementById("response").innerHTML=this.status + this.response; 
+        alert('completed');
+	}
+};
+client.send(requestBody);
     </script>
 
 </body>
